@@ -196,7 +196,7 @@ Things.SearchFormBehaviorImpl = {
    * @param  {event} event
    */
   handleBeforeSubmit: function(event) {
-    var form = event.target;
+    var form = this.getMyForm();
     var evt = this.fire('things-form-pre-submit', form, { cancelable : true });
     if(evt.defaultPrevented) return;
 
