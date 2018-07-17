@@ -136,22 +136,23 @@ things-resource로 부터 위와 같은 형식의 form-fields meta data를 조�
 			:host {
 				display: block;
 				box-sizing: border-box;
-				@apply(--things-default-padding);
-				@apply(--layout-vertical);
-				@apply(--layout-flex);
+				@apply --things-default-padding;
+				@apply --layout-vertical;
+				@apply --layout-flex;
+				--paper-toolbar-content: var(--things-resource-form-toolbar-content);
 			}
 			form {
-				@apply(--layout-flex);
+				@apply --layout-flex;
 			}
 			paper-toolbar {
 				background-color:var(--things-white-background-color);
 				height: 50px;
-				@apply(--things-tight-padding);
+				@apply --things-tight-padding;
 			}
 			paper-toolbar::shadow #bottomBar {
 				height: 50px;
-				@apply(--layout-horizontal);
-				@apply(--layout-end-justified);
+				@apply --layout-horizontal;
+				@apply --layout-end-justified;
 				padding: 0 10px;
 			}
 		</style>

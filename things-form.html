@@ -72,12 +72,13 @@ Copyright © HatioLab Inc. All rights reserved.
 			:host {
 				display: block;
 				box-sizing: border-box;
-				@apply(--things-default-padding);
-				@apply(--layout-vertical);
-				@apply(--layout-flex);
+				@apply --things-default-padding;
+				@apply --layout-vertical;
+				@apply --layout-flex;
+				--paper-toolbar-content: var(--things-resource-form-toolbar-content);
 			}
 			form {
-				@apply(--layout-flex);
+				@apply --layout-flex ;
 			}
 			paper-toolbar {
 				background-color:var(--things-white-background-color);
@@ -86,8 +87,8 @@ Copyright © HatioLab Inc. All rights reserved.
 			}
 			paper-toolbar::shadow #bottomBar {
 				height: 50px;
-				@apply(--layout-horizontal);
-				@apply(--layout-end-justified);
+				@apply --layout-horizontal;
+				@apply --layout-end-justified;
 				padding: 0 10px;
 			}
 		</style>
