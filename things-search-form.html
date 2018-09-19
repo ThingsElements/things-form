@@ -110,7 +110,7 @@ ko-kr
                 method="GET"
                 with-credentials="[[withCredentials]]">
             <div id="fields" class="layout vertical flex"></div>
-            <paper-fab icon="search" title="search" on-tap="_onSearchFormTap"></paper-fab>
+            <paper-fab id = "searchIcon" icon="search" title="search" on-tap="_onSearchFormTap"></paper-fab>
           </form>
       </iron-collapse>
     </paper-material>
@@ -381,7 +381,14 @@ ko-kr
         }
 
         this.handleErrorResponse(response);
-      }
+      },
+      attached: function() {
+       //서치 아이콘 css 수정 이미지 색상 하얗게하기
+       var findFabRoot = this.$.searchIcon;
+       var iconRoot = findFabRoot.$.icon;
+       iconRoot.style.fill = "currentColor";
+
+      },
     });
   </script>
 </dom-module>
