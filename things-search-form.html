@@ -93,6 +93,26 @@ ko-kr
         padding:0;
         opacity: .5;
       }
+      things-input-field {
+          --things-label: {
+            width: 25%;
+            min-height: 19px;
+            display: inline-block;
+            margin-bottom: 10px;
+            padding-right: 5px;
+            color: #fff;
+            font-size: 14px;
+            text-align: right;
+          }
+      }
+      paper-fab {
+        --paper-fab-iron-icon: {
+          fill:currentColor;
+        }
+      }
+
+
+
     </style>
     <iron-media-query query="(max-width: 1239px)" query-matches="{{isTwoContainer}}"></iron-media-query>
     <iron-media-query query="(min-width: 1240px)" query-matches="{{isThreeContainer}}"></iron-media-query>
@@ -379,16 +399,8 @@ ko-kr
             this.openUnkownError(response);
           }
         }
-
         this.handleErrorResponse(response);
-      },
-      attached: function() {
-       //서치 아이콘 css 수정 이미지 색상 하얗게하기
-       var findFabRoot = this.$.searchIcon;
-       var iconRoot = findFabRoot.$.icon;
-       iconRoot.style.fill = "currentColor";
-
-      },
+      }
     });
   </script>
 </dom-module>
