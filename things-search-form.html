@@ -178,7 +178,8 @@ ko-kr
       listeners : {
         'iron-form-presubmit' :'handleBeforeSubmit',
         'iron-form-response' :'_successResponseHandler',
-        'iron-form-error' : '_errorResponseHandler'
+        'iron-form-error' : '_errorResponseHandler',
+        'iron-form-element-register':'_checkFireConfiguredEvent'
       },
 
       behaviors: [
@@ -191,7 +192,14 @@ ko-kr
       observers :[
         '_computeContainers(isTwoContainer, isThreeContainer, isFourContainer,isFiveContainer)'
       ],
-
+      _checkFireConfiguredEvent: function(event){
+        if(this.formFields && this.formFields.length>0){
+          typeof this._registeredElCnt =='undefined'?this._registeredElCnt=1:this._registeredElCnt++;
+          if(this._registeredElCnt==this.formFields.length){
+            this.fire('things-search-form-configured', this.formFields);
+          }
+        }
+      },
       _computeContainers: function(isTwoContainer, isThreeContainer, isFourContainer,isFiveContainer){
         if(isFiveContainer){
           this.set('containerSize',5);
