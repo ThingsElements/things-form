@@ -77,7 +77,9 @@ ko-kr
       :host {
         display: block;
         background-color:var(--things-whitegrey-background-color);
+        margin:5px 15px 0 15px;
         border-bottom:1px solid rgba(0,0,0,.1);
+        @apply --things-default-border-radius;
       }
 
       form {
@@ -106,10 +108,28 @@ ko-kr
             text-align: right;
           }
       }
+      ::shadow things-number-field, ::shadow things-resource-format-selector, ::shadow things-code-combo, ::shadow things-resource-code, 
+      ::shadow things-date-picker, ::shadow things-input-field, ::shadow things-tristate-radio, ::shadow things-resource-selector{
+          --things-label: {
+            width: 25%;
+            min-height: 19px;
+            display: inline-block;
+            margin-bottom: 10px;
+            padding-right: 5px;
+            color: #fff;
+            font-size: 14px;
+            text-align: right;
+          }
+      }
+      
       things-tristate-radio{
           --things-primary-text-color:#9cdeff;
       }
 
+      ::shadow things-tristate-radio{
+          --things-primary-text-color:#9cdeff;
+      }
+      
       things-resource-code, things-code-combo, things-date-picker, things-resource-format-selector, things-resource-selector{
         --things-picker-button:{
           width: 30px;
@@ -121,9 +141,19 @@ ko-kr
           background-color:#006292 !important;
         }
       }
-     
-
-
+      
+      ::shadow things-resource-code, ::shadow things-code-combo, ::shadow things-date-picker, 
+      ::shadow things-resource-format-selector, ::shadow things-resource-selector{
+        --things-picker-button:{
+          width: 30px;
+          display: inline-block;
+          margin-left: 2px;
+          top: -2px;
+          @apply(--things-default-border-radius);
+          height:24px !important;
+          background-color:#006292 !important;
+        }
+      }
     </style>
     <iron-media-query query="(max-width: 1239px)" query-matches="{{isTwoContainer}}"></iron-media-query>
     <iron-media-query query="(min-width: 1240px)" query-matches="{{isThreeContainer}}"></iron-media-query>
