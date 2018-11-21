@@ -348,6 +348,12 @@ ko-kr
       _successResponseHandler: function(event) {
         this.stopSpinner();
         this.lastResponse = event.detail.xhr.response;
+
+        if(app.encryptFields) {
+          this._decryptDeep(this.lastResponse, app.encryptFields);
+          this.set('lastResponse', JSON.parse(JSON.stringify(this.lastResponse)))
+        }
+
         this.handleSuccessResponse(this.lastResponse);
       },
 
@@ -381,6 +387,34 @@ ko-kr
         }
 
         this.handleErrorResponse(response);
+      },
+
+      _decryptDeep: function (object, decryptKeys) {
+        if (!(object && decryptKeys))
+          return;
+
+        for (const key in object) {
+          if (decryptKeys.includes(key)) {
+            if(this._isBase64(object[key])) {
+              object[key] = atob(object[key])
+            } 
+          }
+
+          if(object[key] instanceof Array) {
+            for (const o of object[key]) {
+              this._decryptDeep(o, decryptKeys)
+            }
+          } else if(typeof object[key] == 'object')
+            this._decryptDeep(object[key], decryptKeys)
+        }
+      },
+
+      _isBase64: function (str) {
+        try {
+          return btoa(atob(str)) == str;
+        } catch (err) {
+          return false;
+        }
       }
     });
   </script>
